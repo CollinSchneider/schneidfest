@@ -33,7 +33,8 @@ export default class Home extends React.Component {
       } else {
         return { 
           bogeyClickCounter: 1,
-          lastClickTs: Date.now()
+          lastClickTs: Date.now(),
+          displayBogeyEffect: false
         }
       }
     })
@@ -45,7 +46,7 @@ export default class Home extends React.Component {
       bogeyClickCounter: 0,
       lastClickTs: null,
       bogeyIsCursor: bogeyIsBecomingCursor,
-      displayBogeyEffect: bogeyIsBecomingCursor
+      displayBogeyEffect: true
     }
   }
 
