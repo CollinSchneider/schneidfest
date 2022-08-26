@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import BogeyCursor from '../components/BogeyCursor';
+import BogeyEffect from '../components/BogeyEffect';
 // import DragRingGame from '../components/drag-ring-game/View'
 
 export default class Home extends React.Component {
@@ -13,7 +14,8 @@ export default class Home extends React.Component {
     this.state = {
       bogeyClickCounter: 0,
       lastClickTs: null,
-      bogeyIsCursor: false
+      bogeyIsCursor: false,
+      displayBogeyEffect: false
     }
   }
 
@@ -39,11 +41,11 @@ export default class Home extends React.Component {
 
   _reachedBogeyCursorClickCount = previousState => {
     const bogeyIsBecomingCursor = !previousState.bogeyIsCursor;
-    // bogeyIsBecomingCursor ? this._makeBogeyTheCusor() : this._revertToDefaultCursor();
     return { 
       bogeyClickCounter: 0,
       lastClickTs: null,
-      bogeyIsCursor: bogeyIsBecomingCursor
+      bogeyIsCursor: bogeyIsBecomingCursor,
+      displayBogeyEffect: bogeyIsBecomingCursor
     }
   }
 
@@ -64,6 +66,7 @@ export default class Home extends React.Component {
           </Head>
           <Nav />
           <BogeyCursor isVisible={this.state.bogeyIsCursor} />
+          <BogeyEffect isVisible={this.state.displayBogeyEffect} />
           <div className="full-height-container">
             <div className='block'>
               <h1 className="title cursive" onClick={this.bogeyClickListener}>SchneidFest 2023</h1>
