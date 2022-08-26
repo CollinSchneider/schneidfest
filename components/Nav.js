@@ -16,7 +16,6 @@ export default class Nav extends React.Component {
 
   _listenToScroll = () => {
     window.addEventListener('scroll', _e => {
-      console.log(window.scrollY)
       if(window.scrollY > 35 && !this.state.isFixed) {
         this.setState(() => { return { isFixed: true } });
       } else if(window.scrollY <= 35 && this.state.isFixed) {
