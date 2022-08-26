@@ -17,7 +17,7 @@ export default function Home() {
         <div className="full-height-container">
           <div className='block'>
             <h1 className="title cursive">SchneidFest 2023</h1>
-            <h1 className="sub-title cursive">Details coming soon.</h1>
+            <h2 className="sub-title cursive">Details coming soon.</h2>
           </div>
         </div>
         <div className='img-container'>
