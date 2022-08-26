@@ -39,6 +39,7 @@ export default function Home() {
         .img-container {
           max-height: 100vh;
           overflow: hidden;
+          text-align: center;
         }
         .cursive {
           font-family: 'Rubik', sans-serif;
