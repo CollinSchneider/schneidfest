@@ -6,24 +6,25 @@ export default class BogeyCursor extends React.Component {
     super(props);
     this.state = {
       x: 0,
-      y: 0
+      y: 0,
+      isMobile: null
     }
   }
 
   componentDidMount = () => {
-    console.log('adding mouse listener!')
-    this.mouseListener = window.addEventListener('mousemove', e => this.setState(() => { return { x: e.pageX + 10, y: e.pageY + 10 } }));
+    this.mouseListener = window.addEventListener('mousemove', e => {
+      this.setState(() => { 
+        return { x: e.pageX + 10, y: e.pageY + 10 } 
+      })
+    });
+    // window.addEventListener('scroll', () => this.forceUpdate())
+    this.setState({ isMobile: window.innerWidth < 500 });
   }
-
-  _removeMouseListener = () => {
-    console.log('removing mouse listener!')
-    window.removeEventListener(this.mouseListener);
-  }
-
+  
   render() {
     return (
       <>
-        <div className={`bogey-cursor-container ${this.props.isVisible ? null : 'hidden'}`} 
+        <div className={`bogey-cursor-container ${this.state.isMobile ? 'mobile' : ''} ${this.props.isVisible ? null : 'hidden'}`} 
               style={{ left: this.state.x, top: this.state.y }}>
           <Image src={'/bogey.png'} height={100} width={100} />
         </div>
@@ -31,6 +32,9 @@ export default class BogeyCursor extends React.Component {
           .bogey-cursor-container {
             position: absolute;
             z-index: 5;
+          }
+          .bogey-cursor-container.mobile {
+            display: none !important;
           }
           .hidden {
             display: none;
